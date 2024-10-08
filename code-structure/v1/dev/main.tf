@@ -8,3 +8,12 @@ resource "aws_vpc" "spixrnc-vpc" {
     Name = "spixrnc-${var.environment}-vpc"
   }
 }
+
+resource "aws_subnet" "spixrnc-subnet" {
+  vpc_id     = aws_vpc.spixrnc-vpc.id
+  cidr_block = "10.0.0.0/19"
+
+  tags = {
+    Name = "spixrnc-${var.environment}-subnet"
+  }
+}
